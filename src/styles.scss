@@ -1,0 +1,22 @@
+body {
+    background-color: lightsteelblue;
+}
+
+.gen-title {
+    text-align: center;
+    
+}
+
+.list {
+    .list-item {
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        p {
+            margin-bottom: 0px;
+        }
+    }
+}
+

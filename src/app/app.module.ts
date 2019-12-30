@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule  } from 'angular-in-memory-web-api';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Services
 
@@ -41,6 +42,9 @@ import {MatCardModule} from '@angular/material/card';
     HttpClientInMemoryWebApiModule.forRoot(DataService),
     StoreModule.forRoot({ todos: TodoReducer }),
     EffectsModule.forRoot([TodoEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    }),
 
     // Angular Material
 

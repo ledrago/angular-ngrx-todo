@@ -8,9 +8,20 @@ const initialState = initializeState();
 const reducer = createReducer(
     initialState,
     on(TodoActions.GetTodos, state => state),
-    on(TodoActions.successGetTodos, (state: TodoState, {payload}) => {
+    on(TodoActions.SuccessGetTodos, (state: TodoState, {payload}) => {
         return {...state, TodoList: payload}
     }),
+    on(TodoActions.UpdateTodo, (state: TodoState, {payload}) => {
+        const updateTodos = state.TodoList.map(el => {
+            if(el.id === payload.id) {
+                return payload;
+            } else {
+                return el
+            }
+        })
+        return {...state, TodoList: updateTodos, TodoError: null}
+    }),
+    on(TodoActions.SuccessUpdateTodo, (state: TodoState) => state),
     on(TodoActions.ErrorTodo, (state: TodoState, error: Error) => {
         console.log(error);
         return {...state, TodoError: error}

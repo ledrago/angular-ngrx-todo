@@ -11,10 +11,10 @@ export class DataService implements InMemoryDbService {
   createDb(){
 
     let  todos: Todo[] =  [
- {title: "Faire les courses de Noël", done: true},
- {title: "Acheter les cadeaux pour Steven", done: true},
- {title: "Appeler Guillermo", done: false},
- {title: "Faire le ménage", done: false}
+ {id: 1, title: "Faire les courses de Noël", done: true},
+ {id: 2, title: "Acheter les cadeaux pour Steven", done: true},
+ {id: 3, title: "Appeler Guillermo", done: false},
+ {id: 4, title: "Faire le ménage", done: false}
     ];
  
     return {todos};

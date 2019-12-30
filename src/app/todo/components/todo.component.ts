@@ -5,6 +5,7 @@ import TodoState from 'src/app/app.state';
 import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import * as TodoActions from "../store/todo.action";
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-todo',
@@ -24,15 +25,18 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
     this.TodoSubscription = this.todo$.pipe(
       map(x => {
-        console.log('x : ', x)
-        this.todoList = x.TodoList;
+        x.TodoList.sort((a:any,b:any) => a && b && a.done - b.done);
+        this.todoList = (x.TodoList)
         this.todoError = x.TodoError;
-        console.log('todolist : ', this.todoList)
       })
     ).subscribe();
 
-    this.store.dispatch(TodoActions.BeginGetTodos());
-    
+    this.store.dispatch(TodoActions.GetTodos());    
+  }
+
+  changeTodoState(todo: Todo, checkbox: MatCheckbox): void {
+    todo.done = checkbox.checked;
+    this.store.dispatch(TodoActions.UpdateTodo({payload: todo}))
   }
 
 }

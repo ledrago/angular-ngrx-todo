@@ -1,0 +1,24 @@
+<form [formGroup]="todoForm" *ngIf="todoDetail">
+    <div>
+        <mat-form-field>
+            <input matInput formControlName="title" mat-dialog-title placeholder="Titre">
+        </mat-form-field>
+    </div>
+    
+    <div mat-dialog-content>
+      <mat-form-field>
+        <input formControlName="description" matInput placeholder="Description">
+      </mat-form-field>
+      
+    </div>
+    <div class="item-checkbox">
+      <label for="">Effectué : </label>
+      <mat-checkbox formControlName="done"></mat-checkbox>
+    </div>
+    <div mat-dialog-actions class="buttons-box">
+  <button *ngIf="todoDetail" mat-raised-button color="primary" type="submit" [disabled]="todoForm.invalid" [mat-dialog-close]="todoForm.value" cdkFocusInitial>Changer</button>
+  <button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial>Fermer</button>
+</div>
+</form>
+
+

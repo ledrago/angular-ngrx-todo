@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Todo} from '../models/todo.model';
+import {Todo} from '../../models/todo.model';
 import { select, Store } from '@ngrx/store';
 import TodoState from 'src/app/app.state';
 import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
-import * as TodoActions from "../store/todo.action";
+import * as TodoActions from "../../store/todo.action";
 import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({

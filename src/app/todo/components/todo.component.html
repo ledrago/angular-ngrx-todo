@@ -1,8 +1,0 @@
-
-<h1 class="gen-title">The overkill Todo</h1>
-<div *ngFor="let todo of todoList" class="list">
-    <mat-card class="list-item" *ngIf="todo">
-        <p [ngClass]="todo.done ? 'crossed' : ''">{{todo.title}}</p>
-        <mat-checkbox #todoState (change)="changeTodoState(todo, todoState)" [checked]="todo.done"></mat-checkbox>
-    </mat-card>   
-</div>

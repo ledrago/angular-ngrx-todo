@@ -10,12 +10,25 @@ body {
 .list {
     .list-item {
         margin: 10px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        p {
-            margin-bottom: 0px;
+        .list-item-title {
+            align-items: center;
+            justify-content: space-between;
+            .mat-card-header-text {
+                width: 100%;
+                mat-card-title {
+                    margin-bottom: 0px;
+                    a {
+                        text-decoration: none;
+                        color: black;
+                        display: inline-block;
+                        width: 100%;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+ 
+            }
         }
     }
 }

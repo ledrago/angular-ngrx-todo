@@ -32,6 +32,7 @@ import { TodoDetailComponent } from './todo/components/todo-detail/todo-detail.c
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   entryComponents: [TodoDialogComponent],
   providers: [],

@@ -4,7 +4,7 @@ import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import TodoState from 'src/app/app.state';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Todo } from '../../models/todo.model';
 import * as TodoActions from "../../store/todo.action";
 
@@ -17,6 +17,7 @@ export class TodoDetailComponent implements OnInit {
   todoId: number;
   todoDetail: Todo;
   todo$: Observable<TodoState>;
+  TodoDetailSubscription: Subscription;
 
   constructor(
     public dialog: MatDialog, 
@@ -29,12 +30,13 @@ export class TodoDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.todoId = params['id'] || null;
-      this.todo$.subscribe((state: TodoState) => {
+      this.TodoDetailSubscription = this.todo$.subscribe((state: TodoState) => {
         this.todoDetail = state.TodoList.find(el => el.id == this.todoId);
         this.openDialog(this.todoDetail)
-      }).unsubscribe()
+      })
     })
   }
 
@@ -43,6 +45,7 @@ export class TodoDetailComponent implements OnInit {
       width: '300px',
       data: {todo}
     }).afterClosed().subscribe(result => {
+      this.TodoDetailSubscription.unsubscribe()
       if(result && JSON.stringify(result) !== JSON.stringify(this.todoDetail)) {
         this.store.dispatch(TodoActions.UpdateTodo({payload: result}))
       }

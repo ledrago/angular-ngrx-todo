@@ -1,5 +1,6 @@
 
 <h1 class="gen-title">The overkill Todo</h1>
+<button mat-raised-button color="primary" (click)="newTodo()" class="new-todo-button">Nouvelle tâche <mat-icon>add_circle_outline</mat-icon></button>
 <div *ngFor="let todo of todoList" class="list">
     <mat-card class="list-item" *ngIf="todo">
         <mat-card-header class="list-item-title">

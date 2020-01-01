@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import * as TodoActions from "../../store/todo.action";
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
+import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
 
 @Component({
   selector: 'app-todo',
@@ -18,7 +20,11 @@ export class TodoComponent implements OnInit {
   TodoSubscription: Subscription;
   todoError: Error = null;
 
-  constructor(private store: Store<{todos: TodoState}>) {
+  constructor(
+    private store: Store<{todos: TodoState}>,
+    public dialog: MatDialog,
+    ) 
+  {
     this.todo$ = store.pipe(select('todos'))
   }
 
@@ -37,6 +43,17 @@ export class TodoComponent implements OnInit {
   changeTodoState(todo: Todo, checkbox: MatCheckbox): void {
     todo.done = checkbox.checked;
     this.store.dispatch(TodoActions.UpdateTodo({payload: todo}))
+  }
+
+  newTodo(): void {
+    this.dialog.open(TodoDialogComponent, {
+      width: '300px'
+    }).afterClosed().subscribe(result => {
+      if(result) {
+        result.id = this.todoList.length + 1;
+        this.store.dispatch(TodoActions.CreateTodo({payload: result}))
+      }
+    });
   }
 
 }

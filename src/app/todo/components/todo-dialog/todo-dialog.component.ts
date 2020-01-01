@@ -26,15 +26,18 @@ export class TodoDialogComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      this.todoDetail = this.data.todo;
+      if (this.data) {
+        this.todoDetail = this.data.todo;
 
-      if(this.todoDetail) {
-        this.todoForm.patchValue({
-          id: this.todoDetail.id,
-          title: this.todoDetail.title,
-          description: this.todoDetail.description,
-          done: this.todoDetail.done
-        })
+        if(this.todoDetail) {
+          this.todoForm.patchValue({
+            id: this.todoDetail.id,
+            title: this.todoDetail.title,
+            description: this.todoDetail.description,
+            done: this.todoDetail.done
+          })
+        }
       }
+      
     }
 }

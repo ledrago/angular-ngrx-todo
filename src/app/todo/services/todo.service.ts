@@ -30,6 +30,13 @@ export class TodoService {
     )
   }
 
+  createTodo(todo: Todo): Observable<Todo> {
+    const url = `${this.SERVER_URL}/todos`;
+    return this.http.post<Todo>(url, todo).pipe(
+      catchError((error: HttpErrorResponse) => this.handleError(error))
+    )
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

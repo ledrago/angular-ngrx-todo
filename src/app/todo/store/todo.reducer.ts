@@ -11,6 +11,10 @@ const reducer = createReducer(
     on(TodoActions.SuccessGetTodos, (state: TodoState, {payload}) => {
         return {...state, TodoList: payload}
     }),
+    on(TodoActions.CreateTodo, (state:TodoState, {payload}) => {
+        return {...state, TodoList: [...state.TodoList, payload], TodoError: null}
+    }),
+    on(TodoActions.SuccessCreateTodo, (state:TodoState) => state),
     on(TodoActions.UpdateTodo, (state: TodoState, {payload}) => {
         const updateTodos = state.TodoList.map(el => {
             if(el.id === payload.id) {

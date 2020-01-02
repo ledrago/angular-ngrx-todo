@@ -12,7 +12,7 @@ const reducer = createReducer(
         return {...state, TodoList: payload}
     }),
     on(TodoActions.CreateTodo, (state:TodoState, {payload}) => {
-        return {...state, TodoList: [...state.TodoList, payload], TodoError: null}
+        return {...state, TodoList: [payload, ...state.TodoList], TodoError: null}
     }),
     on(TodoActions.SuccessCreateTodo, (state:TodoState) => state),
     on(TodoActions.UpdateTodo, (state: TodoState, {payload}) => {

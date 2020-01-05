@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule  } from 'angular-in-memory-web-api';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 // Services
 
@@ -71,6 +72,7 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   entryComponents: [TodoDialogComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

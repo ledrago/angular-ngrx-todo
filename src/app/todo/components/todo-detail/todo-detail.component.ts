@@ -41,6 +41,7 @@ export class TodoDetailComponent implements OnInit {
   }
 
   openDialog(todo: Todo): void {
+    console.log('open dialog')
     this.dialog.open(TodoDialogComponent, {
       width: '300px',
       data: {todo}

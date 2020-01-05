@@ -1,6 +1,5 @@
 import {Todo} from '../models/todo.model';
 import { createAction, props } from '@ngrx/store';
-import { create } from 'domain';
 
 // Getting todo list
 

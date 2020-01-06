@@ -21,7 +21,8 @@ describe('AppComponent', () => {
         AppComponent,
         TodoComponent,
       ],
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   it('should create the app', () => {

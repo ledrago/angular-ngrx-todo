@@ -12,7 +12,7 @@ import { Action, Store } from '@ngrx/store';
 import { TodoService } from '../../services/todo.service';
 import { TodoEffects } from '../../store/todo.effects';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -34,8 +37,18 @@ describe('TodoComponent', () => {
     const spy = jasmine.createSpyObj('TodoService', ['getTodos']);
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatIconModule, MatButtonModule, MatDialogModule, MatCheckboxModule, MatCardModule, BrowserAnimationsModule],
-      declarations: [ TodoComponent ],
+      imports: [
+        RouterTestingModule, 
+        MatIconModule,
+        MatButtonModule, 
+        MatDialogModule, 
+        MatCheckboxModule, 
+        MatCardModule, 
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
+      ],
+      declarations: [ TodoComponent, TodoDialogComponent ],
       providers: [
         TodoEffects,
         provideMockStore({initialState}),
@@ -43,6 +56,7 @@ describe('TodoComponent', () => {
         {provide: TodoService, useValue: spy}
       ]
     })
+    .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [TodoDialogComponent] } })
     .compileComponents()
     .then(() => {
       store = TestBed.get<Store<{todos: TodoState}>>(Store),

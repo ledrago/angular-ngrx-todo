@@ -6,6 +6,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { TodoReducer } from '../../store/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { TodoDialogComponent } from '../todo-dialog/todo-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 describe('TodoDetailComponent', () => {
   let component: TodoDetailComponent;
@@ -13,10 +19,14 @@ describe('TodoDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoDetailComponent ],
+      declarations: [ TodoDetailComponent, TodoDialogComponent ],
       imports: [
         MatDialogModule, 
         RouterTestingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
         StoreModule.forRoot({ todos: TodoReducer }),
         StoreDevtoolsModule.instrument({
           maxAge: 10
@@ -24,6 +34,7 @@ describe('TodoDetailComponent', () => {
 
       ]
     })
+    .overrideModule(BrowserDynamicTestingModule, { set: { entryComponents: [TodoDialogComponent] } })
     .compileComponents();
   }));
 

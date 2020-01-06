@@ -35,13 +35,14 @@ export class TodoDetailComponent implements OnInit {
       this.todoId = params['id'] || null;
       this.TodoDetailSubscription = this.todo$.subscribe((state: TodoState) => {
         this.todoDetail = state.TodoList.find(el => el.id == this.todoId);
-        this.openDialog(this.todoDetail)
+        if(this.todoDetail) {
+          this.openDialog(this.todoDetail)
+        } 
       })
     })
   }
 
   openDialog(todo: Todo): void {
-    console.log('open dialog')
     this.dialog.open(TodoDialogComponent, {
       width: '300px',
       data: {todo}

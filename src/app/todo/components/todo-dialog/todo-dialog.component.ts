@@ -21,14 +21,13 @@ export class TodoDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<TodoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { todo: Todo },
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
     if (this.data) {
       this.todoDetail = this.data.todo;
-
       if (this.todoDetail) {
         this.todoForm.patchValue({
           id: this.todoDetail.id,

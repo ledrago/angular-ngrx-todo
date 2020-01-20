@@ -5,7 +5,7 @@ import { TodoComponent } from "./todo/components/todo/todo.component";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 describe("AppComponent", () => {
   beforeEach(async(() => {
@@ -15,7 +15,7 @@ describe("AppComponent", () => {
         MatIconModule,
         MatCardModule,
         MatCheckboxModule,
-        BrowserAnimationsModule
+        NoopAnimationsModule
       ],
       declarations: [AppComponent, TodoComponent]
     }).compileComponents();

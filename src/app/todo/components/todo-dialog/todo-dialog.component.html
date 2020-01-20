@@ -21,7 +21,6 @@
   </div>
   <div mat-dialog-actions class="buttons-box">
     <button
-      *ngIf="!data"
       mat-raised-button
       color="primary"
       type="submit"
@@ -29,18 +28,8 @@
       [mat-dialog-close]="todoForm.value"
       cdkFocusInitial
     >
-      Créer
-    </button>
-    <button
-      *ngIf="data"
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="todoForm.invalid"
-      [mat-dialog-close]="todoForm.value"
-      cdkFocusInitial
-    >
-      Changer
+      <span *ngIf="data">Changer</span>
+      <span *ngIf="!data">Créer</span>
     </button>
     <button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial>
       Fermer

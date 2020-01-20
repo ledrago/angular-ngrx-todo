@@ -7,9 +7,8 @@ const initialState = initializeState();
 
 const reducer = createReducer(
   initialState,
-  on(TodoActions.GetTodos, state => state),
   on(TodoActions.SuccessGetTodos, (state: TodoState, { payload }) => {
-    return { ...state, TodoList: payload };
+    return { ...state, TodoList: sortByBooleanProp(payload, "done") };
   }),
   on(TodoActions.CreateTodo, (state: TodoState, { payload }) => {
     return {
@@ -18,7 +17,6 @@ const reducer = createReducer(
       TodoError: null
     };
   }),
-  on(TodoActions.SuccessCreateTodo, (state: TodoState) => state),
   on(TodoActions.UpdateTodo, (state: TodoState, { payload }) => {
     const updateTodos = state.TodoList.map(el => {
       if (el.id === payload.id) {
@@ -27,14 +25,21 @@ const reducer = createReducer(
         return el;
       }
     });
-    return { ...state, TodoList: updateTodos, TodoError: null };
+    return {
+      ...state,
+      TodoList: sortByBooleanProp(updateTodos, "done"),
+      TodoError: null
+    };
   }),
-  on(TodoActions.SuccessUpdateTodo, (state: TodoState) => state),
   on(TodoActions.ErrorTodo, (state: TodoState, error: Error) => {
     console.log(error);
     return { ...state, TodoError: error };
   })
 );
+
+function sortByBooleanProp(payload: Todo[], property: string): Todo[] {
+  return payload.sort((a: any, b: any) => a && b && a[property] - b[property]);
+}
 
 export function TodoReducer(state: TodoState | undefined, action: Action) {
   return reducer(state, action);

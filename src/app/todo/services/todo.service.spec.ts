@@ -2,12 +2,12 @@ import { TestBed } from "@angular/core/testing";
 
 import { TodoService } from "./todo.service";
 import { HttpClientModule } from "@angular/common/http";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 
 describe("TodoService", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, BrowserAnimationsModule]
+      imports: [HttpClientModule, NoopAnimationsModule]
     })
   );
 

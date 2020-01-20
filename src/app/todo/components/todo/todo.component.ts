@@ -31,7 +31,6 @@ export class TodoComponent implements OnInit {
     this.TodoSubscription = this.todo$
       .pipe(
         map(x => {
-          x.TodoList.sort((a: any, b: any) => a && b && a.done - b.done);
           this.todoList = x.TodoList;
           this.todoError = x.TodoError;
         })

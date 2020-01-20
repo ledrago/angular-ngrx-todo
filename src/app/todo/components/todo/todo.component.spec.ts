@@ -19,7 +19,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatCardModule } from "@angular/material/card";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 import { TodoDialogComponent } from "../todo-dialog/todo-dialog.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -44,7 +44,7 @@ describe("TodoComponent", () => {
         MatDialogModule,
         MatCheckboxModule,
         MatCardModule,
-        BrowserAnimationsModule,
+        NoopAnimationsModule,
         MatFormFieldModule,
         ReactiveFormsModule
       ],

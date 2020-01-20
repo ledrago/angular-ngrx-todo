@@ -11,7 +11,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialog
 } from "@angular/material/dialog";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 
 describe("TodoDialogComponent", () => {
@@ -31,7 +31,7 @@ describe("TodoDialogComponent", () => {
         ReactiveFormsModule,
         MatCheckboxModule,
         MatDialogModule,
-        BrowserAnimationsModule
+        NoopAnimationsModule
       ]
     })
       .overrideModule(BrowserDynamicTestingModule, {

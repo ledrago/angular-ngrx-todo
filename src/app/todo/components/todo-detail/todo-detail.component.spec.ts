@@ -6,7 +6,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { StoreModule } from "@ngrx/store";
 import { TodoReducer } from "../../store/todo.reducer";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserDynamicTestingModule } from "@angular/platform-browser-dynamic/testing";
 import { TodoDialogComponent } from "../todo-dialog/todo-dialog.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -23,7 +23,7 @@ describe("TodoDetailComponent", () => {
       imports: [
         MatDialogModule,
         RouterTestingModule,
-        BrowserAnimationsModule,
+        NoopAnimationsModule,
         MatFormFieldModule,
         ReactiveFormsModule,
         MatCheckboxModule,
